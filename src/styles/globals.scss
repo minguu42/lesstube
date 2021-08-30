@@ -1,0 +1,63 @@
+:root {
+  --c-primary: #192f60;
+  --c-on-primary-high: #fff;
+  --c-on-primary-medium: rgba(255, 255, 255, 0.74);
+  --c-on-primary-disable: rgba(255, 255, 255, 0.38);
+  --c-secondary: #82adff;
+  --c-on-secondary-high: rgba(0, 0, 0, 0.94);
+  --c-on-secondary-medium: rgba(0, 0, 0, 0.68);
+  --c-on-secondary-disable: rgba(0, 0, 0, 0.38);
+  --c-background: #fff;
+  --c-on-background-high: rgba(0, 0, 0, 0.87);
+  --c-on-background-medium: rgba(0, 0, 0, 0.6);
+  --c-on-background-disable: rgba(0, 0, 0, 0.38);
+  --c-surface: #fff;
+  --c-surface-hover: rgba(0, 0, 0, 0.04);
+  --c-on-surface-high: rgba(0, 0, 0, 0.87);
+  --c-on-surface-medium: rgba(0, 0, 0, 0.6);
+  --c-on-surface-disable: rgba(0, 0, 0, 0.38);
+  --c-error: #b00020;
+  --c-on-error: #fff;
+  --c-outline: rgba(0, 0, 0, 0.12);
+}
+
+html {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-repeat: no-repeat;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"],
+[role="button"] {
+  cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+  background-color: transparent;
+  border-style: none;
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline-width: 0;
+}
