@@ -1,0 +1,22 @@
+@use "src/styles/variables";
+
+.info {
+  padding: 16px 0;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: var(--c-on-background-high);
+  @include variables.headline5;
+}
+
+.channelTitle {
+  margin-bottom: 4px;
+  color: var(--c-on-background-medium);
+  @include variables.subtitle1;
+}
+
+.statistics {
+  color: var(--c-on-background-medium);
+  @include variables.subtitle1;
+}
