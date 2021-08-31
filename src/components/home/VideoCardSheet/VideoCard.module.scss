@@ -1,0 +1,37 @@
+@use "src/styles/variables";
+
+.container {
+  display: flex;
+  background-color: var(--c-surface);
+}
+
+.body {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  width: 176px;
+  padding: 4px 8px 2px 8px;
+}
+
+.title {
+  display: -webkit-box;
+  margin-bottom: 4px;
+  overflow: hidden;
+  color: var(--c-on-surface-high);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  @include variables.subtitle1;
+}
+
+.channelTitle {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--c-on-surface-medium);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  @include variables.caption;
+}
+
+.trashButton {
+  height: 24px;
+}

@@ -17,10 +17,11 @@ export const VideoList = ({ videos }: Props): JSX.Element => (
 const videos: Video[] = [
   {
     id: "1",
-    title: "はなお 空を飛ぶ",
+    title:
+      "はなお 空を飛ぶ! 空は自由の象徴 何にも邪魔されない自由の翼 今羽ばたく",
     thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
+    channelTitle: "はなお ぱなお 俺たちはここにいるぜ！チャンネル",
+    viewCount: 42566666,
     publishedAt: new Date(),
   },
   {

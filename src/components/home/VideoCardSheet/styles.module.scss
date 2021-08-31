@@ -13,6 +13,14 @@
   @include variables.headline6;
 }
 
+.videoCardLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  list-style: none;
+}
+
 .watchButton {
   padding: 8px 16px;
   color: var(--c-primary);

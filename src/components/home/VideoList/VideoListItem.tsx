@@ -13,10 +13,10 @@ const VideoListItem = ({ video }: Props): JSX.Element => (
     <div className={styles.info}>
       <h6 className={styles.title}>{video.title}</h6>
       <div className={styles.detailContainer}>
-        <div>
+        <div className={styles.leftWrapper}>
           <p className={styles.channelTitle}>{video.channelTitle}</p>
           <p className={styles.statistics}>
-            {video.viewCount} views・2 years ago
+            {video.viewCount} views・2021/07/01
           </p>
         </div>
         <button className={styles.watchNowButton}>今から見る</button>
