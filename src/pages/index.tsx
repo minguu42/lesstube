@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import TopAppBar from "components/common/TopAppBar";
-import Hello from "components/landing/Hello";
+import SearchBar from "components/home/SearchBar";
 import styles from "./styles.module.scss";
 
 const Home: NextPage = () => {
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
       <TopAppBar />
       <main className={styles.main}>
-        <Hello />
+        <SearchBar />
       </main>
     </div>
   );

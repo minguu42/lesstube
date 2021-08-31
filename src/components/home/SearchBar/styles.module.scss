@@ -1,0 +1,27 @@
+@use "src/styles/variables";
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 640px;
+  background-color: var(--c-surface);
+}
+
+.input {
+  width: 100%;
+  max-width: 576px;
+  height: 32px;
+  padding: 0 12px;
+  color: var(--c-on-surface-high);
+  border: 1px solid var(--c-outline);
+  border-radius: 4px 0 0 4px;
+  @include variables.subtitle1;
+}
+
+.button {
+  width: 64px;
+  height: 32px;
+  padding: 4px 20px;
+  background-color: var(--c-secondary);
+  border-radius: 0 4px 4px 0;
+}
