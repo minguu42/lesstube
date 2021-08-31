@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import TopAppBar from "components/common/TopAppBar";
 import SearchBar from "components/home/SearchBar";
+import VideoList from "components/home/VideoList";
 import styles from "./styles.module.scss";
 
 const Home: NextPage = () => {
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
       <TopAppBar />
       <main className={styles.main}>
         <SearchBar />
+        <VideoList />
       </main>
     </div>
   );
