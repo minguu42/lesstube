@@ -26,9 +26,14 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          {/*<link rel="icon" href="/favicon.ico" sizes="48x48" type="image/vnd.microsoft.icon" />*/}
-          {/*<link rel="icon" href="/icon192.png" sizes="192x192" type="image/png" />*/}
-          {/*<link rel="apple-touch-icon-precomposed" href="/icon180.png" />*/}
+          <link rel="icon" href="/icon32.png" sizes="32x32" type="image/png" />
+          <link
+            rel="icon"
+            href="/icon192.png"
+            sizes="192x192"
+            type="image/png"
+          />
+          <link rel="apple-touch-icon-precomposed" href="/icon180.png" />
           {/*<meta name="msapplication-TileImage" content="画像 URL" />*/}
           {/*<meta name="msapplication-TileColor" content="カラーコード（例：#F89174）" />*/}
 
