@@ -1,8 +1,13 @@
+.sideSheetLayout {
+  display: flex;
+}
+
 .main {
   display: flex;
+  flex: 1 1 0;
   flex-direction: column;
+  gap: 24px;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  padding: 16px;
+  padding: 24px 16px;
 }
