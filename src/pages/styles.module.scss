@@ -1,5 +1,10 @@
+.sideSheetLayout {
+  display: flex;
+}
+
 .main {
   display: flex;
+  flex: 1 1 0;
   flex-direction: column;
   gap: 24px;
   align-items: center;

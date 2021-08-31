@@ -4,6 +4,7 @@ import Head from "next/head";
 import TopAppBar from "components/common/TopAppBar";
 import SearchBar from "components/home/SearchBar";
 import VideoList from "components/home/VideoList";
+import VideoCardSheet from "components/home/VideoCardSheet";
 import styles from "./styles.module.scss";
 
 const Home: NextPage = () => {
@@ -18,10 +19,13 @@ const Home: NextPage = () => {
       </Head>
 
       <TopAppBar />
-      <main className={styles.main}>
-        <SearchBar />
-        <VideoList />
-      </main>
+      <div className={styles.sideSheetLayout}>
+        <main className={styles.main}>
+          <SearchBar />
+          <VideoList />
+        </main>
+        <VideoCardSheet />
+      </div>
     </div>
   );
 };
