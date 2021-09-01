@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import TrashIcon from "components/common/icons/TrashIcon";
-import styles from "./VideoCard.module.scss";
+import styles from "./styles.module.scss";
 import { Video } from "models/video";
 
 type Props = {

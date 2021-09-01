@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import VideoCard from "components/home/VideoCardSheet/VideoCard";
+import VideoCard from "components/common/VideoCard";
 import styles from "./styles.module.scss";
 import { Video } from "models/video";
 
