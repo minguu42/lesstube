@@ -7,9 +7,9 @@ type Props = {
 };
 
 export const SideSheet = ({ videos }: Props): JSX.Element => (
-  <div>
-    <h2>今から見る</h2>
-    <ul>
+  <div className={styles.container}>
+    <h2 className={styles.title}>今から見る</h2>
+    <ul className={styles.videoCardLayout}>
       {videos.map((video) => (
         <li key={video.id}>
           <VideoCard video={video} />

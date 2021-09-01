@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import TopAppBar from "components/common/TopAppBar";
 import YouTubePlayerContainer from "components/watch/YouTubePlayer";
+import SideSheet from "components/watch/SideSheet";
 import styles from "./styles.module.scss";
 
 const Watch: NextPage = () => (
@@ -20,6 +21,7 @@ const Watch: NextPage = () => (
       <main className={styles.main}>
         <YouTubePlayerContainer />
       </main>
+      <SideSheet />
     </div>
   </div>
 );
