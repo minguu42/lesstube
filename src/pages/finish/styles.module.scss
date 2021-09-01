@@ -1,0 +1,19 @@
+@use "src/styles/variables";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 0;
+}
+
+.message {
+  color: var(--c-on-background-high);
+  text-align: center;
+  @include variables.headline2;
+}
+
+.goodbyeImage {
+  top: -50px !important;
+  margin: 0 !important;
+}
