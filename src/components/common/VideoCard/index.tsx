@@ -1,14 +1,20 @@
 import Image from "next/image";
+import { useRecoilState } from "recoil";
 
 import TrashIcon from "components/common/icons/TrashIcon";
 import styles from "./styles.module.scss";
-import { Video } from "models/video";
+import { Video, watchNowVideosState } from "models/video";
 
 type Props = {
   video: Video;
+  handleClick: () => void;
 };
 
-const VideoCard = ({ video }: Props): JSX.Element => (
+type ContainerProps = {
+  video: Video;
+};
+
+const VideoCard = ({ video, handleClick }: Props): JSX.Element => (
   <div className={styles.container}>
     <Image src="/logo.png" alt="thumbnail image" width={112} height={68} />
     <div className={styles.body}>
@@ -16,11 +22,26 @@ const VideoCard = ({ video }: Props): JSX.Element => (
         <h6 className={styles.title}>{video.title}</h6>
         <p className={styles.channelTitle}>{video.channelTitle}</p>
       </div>
-      <button className={styles.trashButton}>
+      <button onClick={handleClick} className={styles.trashButton}>
         <TrashIcon color="#666666" />
       </button>
     </div>
   </div>
 );
 
-export default VideoCard;
+const VideoCardContainer = ({ video }: ContainerProps): JSX.Element => {
+  const [watchNowVideos, setWatchNowVideos] =
+    useRecoilState(watchNowVideosState);
+
+  const handleClick = (): void => {
+    const index = watchNowVideos.findIndex((item) => video === item);
+    setWatchNowVideos([
+      ...watchNowVideos.slice(0, index),
+      ...watchNowVideos.slice(index + 1),
+    ]);
+  };
+
+  return <VideoCard video={video} handleClick={handleClick} />;
+};
+
+export default VideoCardContainer;

@@ -1,13 +1,19 @@
 import Image from "next/image";
+import { useRecoilState } from "recoil";
 
 import styles from "./styles.module.scss";
-import { Video } from "models/video";
+import { Video, watchNowVideosState } from "models/video";
 
 type Props = {
   video: Video;
+  handleClick: () => void;
 };
 
-const VideoListItem = ({ video }: Props): JSX.Element => (
+type ContainerProps = {
+  video: Video;
+};
+
+const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
   <div>
     <Image src="/logo.png" alt="thumbnail image" width={320} height={176} />
     <div className={styles.info}>
@@ -19,10 +25,25 @@ const VideoListItem = ({ video }: Props): JSX.Element => (
             {video.viewCount} views・2021/07/01
           </p>
         </div>
-        <button className={styles.watchNowButton}>今から見る</button>
+        <button onClick={handleClick} className={styles.watchNowButton}>
+          今から見る
+        </button>
       </div>
     </div>
   </div>
 );
 
-export default VideoListItem;
+const VideoListItemContainer = ({ video }: ContainerProps): JSX.Element => {
+  const [watchNowVideos, setWatchNowVideos] =
+    useRecoilState(watchNowVideosState);
+
+  const handleClick = () => {
+    if (watchNowVideos.findIndex((item) => video === item) === -1) {
+      setWatchNowVideos((prev) => [...prev, video]);
+    }
+  };
+
+  return <VideoListItem video={video} handleClick={handleClick} />;
+};
+
+export default VideoListItemContainer;

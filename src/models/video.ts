@@ -1,3 +1,5 @@
+import { atom } from "recoil";
+
 export type Video = {
   id: string;
   title: string;
@@ -6,3 +8,8 @@ export type Video = {
   viewCount: number;
   publishedAt: Date;
 };
+
+export const watchNowVideosState = atom<Video[]>({
+  key: "watchNowVideosState",
+  default: [],
+});
