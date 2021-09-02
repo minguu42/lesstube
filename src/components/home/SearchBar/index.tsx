@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
 
 import SearchIcon from "components/common/icons/SearchIcon";
 import styles from "./styles.module.scss";
+import {
+  isSearchListResponse,
+  newVideosFromSearch,
+  videosState,
+} from "models/video";
+import { fetchData } from "lib/fetch";
 
 type Props = {
   keyword: string;
@@ -32,6 +39,7 @@ export const SearchBar = ({
 
 const SearchBarContainer = (): JSX.Element => {
   const [keyword, setKeyword] = useState("");
+  const setVideos = useSetRecoilState(videosState);
 
   const handleKeywordChange: React.ChangeEventHandler<HTMLInputElement> = (
     e
@@ -41,7 +49,22 @@ const SearchBarContainer = (): JSX.Element => {
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-    alert(keyword);
+    console.log("Submit");
+
+    fetchData(
+      "/search",
+      `part=snippet&maxResults=12&q=${keyword}&regionCode=JP&type=video`
+    )
+      .then((data) => {
+        console.log(data);
+        if (isSearchListResponse(data)) {
+          console.log("2");
+          setVideos(newVideosFromSearch(data));
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (

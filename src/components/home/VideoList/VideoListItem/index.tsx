@@ -28,7 +28,9 @@ const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
         <div className={styles.leftWrapper}>
           <p className={styles.channelTitle}>{video.channelTitle}</p>
           <p className={styles.statistics}>
-            {video.viewCount.toLocaleString()} views・
+            {video.viewCount === 0
+              ? ""
+              : video.viewCount.toLocaleString() + " views・"}
             {formatDate(video.publishedAt)}
           </p>
         </div>
