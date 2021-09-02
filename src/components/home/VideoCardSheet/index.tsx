@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
 
 import VideoCard from "components/common/VideoCard";
 import styles from "./styles.module.scss";
-import { Video } from "models/video";
+import { Video, watchNowVideosState } from "models/video";
 
 type Props = {
-  videos: Video[];
+  watchNowVideos: Video[];
 };
 
-export const VideoCardSheet = ({ videos }: Props): JSX.Element => (
+export const VideoCardSheet = ({ watchNowVideos }: Props): JSX.Element => (
   <div className={styles.container}>
     <h3 className={styles.title}>今から見る</h3>
     <ul className={styles.videoCardLayout}>
-      {videos.map((video) => (
+      {watchNowVideos.map((video) => (
         <li key={video.id}>
           <VideoCard video={video} />
         </li>
@@ -22,110 +23,19 @@ export const VideoCardSheet = ({ videos }: Props): JSX.Element => (
   </div>
 );
 
-const videos: Video[] = [
-  {
-    id: "1",
-    title:
-      "はなお 空を飛ぶ! 空は自由の象徴 何にも邪魔されない自由の翼 今羽ばたく",
-    thumbnailURL: "None",
-    channelTitle: "はなお ぱなお 俺たちはここにいるぜ！チャンネル",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "2",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "3",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "4",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "5",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "6",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "7",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "8",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "9",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "10",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "11",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "12",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-];
-
 const VideoCardSheetContainer = (): JSX.Element => {
-  const [isOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
+  const watchNowVideos = useRecoilValue(watchNowVideosState);
 
-  return <>{isOpen && <VideoCardSheet videos={videos} />}</>;
+  useEffect(() => {
+    if (watchNowVideos.length === 0) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  }, [watchNowVideos]);
+
+  return <>{isOpen && <VideoCardSheet watchNowVideos={watchNowVideos} />}</>;
 };
 
 export default VideoCardSheetContainer;
