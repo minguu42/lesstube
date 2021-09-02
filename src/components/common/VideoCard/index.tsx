@@ -16,7 +16,12 @@ type ContainerProps = {
 
 const VideoCard = ({ video, handleClick }: Props): JSX.Element => (
   <div className={styles.container}>
-    <Image src="/logo.png" alt="thumbnail image" width={112} height={68} />
+    <Image
+      src={video.thumbnailURL}
+      alt="thumbnail image"
+      width={112}
+      height={68}
+    />
     <div className={styles.body}>
       <div>
         <h6 className={styles.title}>{video.title}</h6>

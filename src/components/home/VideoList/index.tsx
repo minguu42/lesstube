@@ -1,6 +1,10 @@
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+
 import VideoListItem from "components/home/VideoList/VideoListItem";
 import styles from "./styles.module.scss";
-import { Video } from "models/video";
+import { isVideosResponse, newVideos, Video, videosState } from "models/video";
+import { fetchData } from "lib/fetch";
 
 type Props = {
   videos: Video[];
@@ -14,107 +18,24 @@ export const VideoList = ({ videos }: Props): JSX.Element => (
   </div>
 );
 
-const videos: Video[] = [
-  {
-    id: "1",
-    title:
-      "はなお 空を飛ぶ! 空は自由の象徴 何にも邪魔されない自由の翼 今羽ばたく",
-    thumbnailURL: "None",
-    channelTitle: "はなお ぱなお 俺たちはここにいるぜ！チャンネル",
-    viewCount: 42566666,
-    publishedAt: new Date(),
-  },
-  {
-    id: "2",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "3",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "4",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "5",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "6",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "7",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "8",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "9",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "10",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "11",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-  {
-    id: "12",
-    title: "はなお 空を飛ぶ",
-    thumbnailURL: "None",
-    channelTitle: "はなお",
-    viewCount: 425,
-    publishedAt: new Date(),
-  },
-];
-
 const VideoListContainer = (): JSX.Element => {
+  const [videos, setVideos] = useRecoilState(videosState);
+
+  useEffect(() => {
+    fetchData(
+      "/videos",
+      "part=snippet,statistics&chart=mostPopular&maxResults=12&regionCode=JP"
+    )
+      .then((data) => {
+        if (isVideosResponse(data)) {
+          setVideos(newVideos(data));
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [setVideos]);
+
   return <VideoList videos={videos} />;
 };
 

@@ -3,6 +3,7 @@ import { useRecoilState } from "recoil";
 
 import styles from "./styles.module.scss";
 import { Video, watchNowVideosState } from "models/video";
+import { formatDate } from "lib/format";
 
 type Props = {
   video: Video;
@@ -15,14 +16,20 @@ type ContainerProps = {
 
 const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
   <div>
-    <Image src="/logo.png" alt="thumbnail image" width={320} height={176} />
+    <Image
+      src={video.thumbnailURL}
+      alt="thumbnail image"
+      width={320}
+      height={176}
+    />
     <div className={styles.info}>
       <h6 className={styles.title}>{video.title}</h6>
       <div className={styles.detailContainer}>
         <div className={styles.leftWrapper}>
           <p className={styles.channelTitle}>{video.channelTitle}</p>
           <p className={styles.statistics}>
-            {video.viewCount} views・2021/07/01
+            {video.viewCount.toLocaleString()} views・
+            {formatDate(video.publishedAt)}
           </p>
         </div>
         <button onClick={handleClick} className={styles.watchNowButton}>
