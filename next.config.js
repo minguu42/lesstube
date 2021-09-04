@@ -4,4 +4,7 @@ module.exports = {
   eslint: {
     dirs: ["src/components", "src/lib", "src/models", "src/pages"],
   },
+  images: {
+    domains: ["i.ytimg.com"],
+  },
 };
