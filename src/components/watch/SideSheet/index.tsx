@@ -1,7 +1,7 @@
 import VideoCard from "components/common/VideoCard";
 import styles from "./styles.module.scss";
-import {Video, watchNowVideosState} from "models/video";
-import {useRecoilValue} from "recoil";
+import { Video, watchNowVideosState } from "models/video";
+import { useRecoilValue } from "recoil";
 
 type Props = {
   watchNowVideos: Video[];

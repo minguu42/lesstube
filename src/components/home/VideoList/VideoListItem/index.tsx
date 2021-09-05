@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useRecoilState } from "recoil";
 
+import { OutlinedButton } from "components/common/Button";
 import styles from "./styles.module.scss";
 import { Video, watchNowVideosState } from "models/video";
 import { formatDate } from "lib/format";
@@ -34,9 +35,7 @@ const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
             {formatDate(video.publishedAt)}
           </p>
         </div>
-        <button onClick={handleClick} className={styles.watchNowButton}>
-          今から見る
-        </button>
+        <OutlinedButton label="今から見る" onClick={handleClick} />
       </div>
     </div>
   </div>

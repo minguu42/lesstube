@@ -41,16 +41,3 @@
   color: var(--c-on-surface-medium);
   @include variables.caption;
 }
-
-.watchNowButton {
-  padding: 8px 16px;
-  color: var(--c-primary);
-  background-color: var(--c-surface);
-  border: 1px solid var(--c-primary);
-  border-radius: 4px;
-  @include variables.button;
-
-  &:hover {
-    background-color: var(--c-surface-hover);
-  }
-}
