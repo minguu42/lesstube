@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useRecoilValue } from "recoil";
 
 import VideoCard from "components/common/VideoCard";
+import { OutlinedLinkButton } from "components/common/Button";
 import styles from "./styles.module.scss";
 import { Video, watchNowVideosState } from "models/video";
 
@@ -20,9 +20,7 @@ export const VideoCardSheet = ({ watchNowVideos }: Props): JSX.Element => (
         </li>
       ))}
     </ul>
-    <Link href="/watch">
-      <a className={styles.watchButton}>動画を見る</a>
-    </Link>
+    <OutlinedLinkButton label="動画を見る" url="/watch" />
   </div>
 );
 
