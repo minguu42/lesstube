@@ -1,15 +1,9 @@
 @use "src/styles/variables";
 
-.contents {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-}
-
 .videoCardLayout {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 16px;
   list-style: none;
 }

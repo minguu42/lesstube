@@ -12,11 +12,3 @@
   color: var(--c-on-surface-high);
   @include variables.headline6;
 }
-
-.videoCardLayout {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
-  list-style: none;
-}
