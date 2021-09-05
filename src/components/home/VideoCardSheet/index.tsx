@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Link from "next/link"
+import Link from "next/link";
 import { useRecoilValue } from "recoil";
 
 import VideoCard from "components/common/VideoCard";
@@ -20,7 +20,9 @@ export const VideoCardSheet = ({ watchNowVideos }: Props): JSX.Element => (
         </li>
       ))}
     </ul>
-      <Link href="/watch" ><a className={styles.watchButton}>動画を見る</a></Link>
+    <Link href="/watch">
+      <a className={styles.watchButton}>動画を見る</a>
+    </Link>
   </div>
 );
 
