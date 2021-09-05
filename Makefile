@@ -26,6 +26,12 @@ lint: ## ESLint, stylelint による静的解析
 test: ## Jest, React Testing Library によるテスト
 	@jest
 
+.PHONY: check
+check: ## fmt, lint, test を実行し, 適切な状態か確認する
+	@make fmt
+	@make lint
+	@make test
+
 .PHONY: help
 help: ## ヘルプ
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-10s\033[0m %s\n", $$1, $$2}'
