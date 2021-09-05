@@ -1,16 +1,17 @@
-# Next App Template
+# LessTube
 
-`Next.js` を用いた Web アプリケーション開発用のテンプレートリポジトリ
+`LessTube` は YouTube の見過ぎを防ぐための Web アプリケーションです. 動画を見始める前に見たい動画を全て選択し, その動画だけを見ることで, 時間を忘れ,動画を見過ぎてしまったという事態をなくします. 
 
 ## 開発環境
 
 - プログラミング言語：TypeScript
-- ライブラリ・フレームワーク：React, Next.js
-- スタイリング：CSS Modules + Sass
-- 状態管理：useContext
+- 主なライブラリ・フレームワーク：React, Next.js
+- スタイリング：CSS Modules, Sass
+- 状態管理：Recoil
 - デプロイ：Vercel
 - フォーマッタ・リンタ：Prettier, ESLint, stylelint
 - テスト：Jest + React Testing Library
+- タスクランナー：GNU make
 
 ### ローカル実行
 
@@ -35,11 +36,3 @@ make lint
 ```bash
 make test
 ```
-
-## 参考
-
-- [ress](https://github.com/filipelinhares/ress)
-- [Custom Document](https://nextjs.org/docs/advanced-features/custom-document)
-- [Absolute Imports and Module path aliases](https://nextjs.org/docs/advanced-features/module-path-aliases)
-- [Basic Features: ESLint](https://nextjs.org/docs/basic-features/eslint)
-- [Testing | Next.js](https://nextjs.org/docs/testing)
