@@ -14,7 +14,7 @@ start: ## 本番サーバの起動
 
 .PHONY: fmt
 fmt: ## Prettier, stylelint によるフォーマット
-	@prettier -w --ignore-path ./.gitignore "**/*.{js,jsx,ts,tsx,scss,json,md}"
+	@prettier --ignore-path ./.gitignore -l -w "**/*.{js,jsx,ts,tsx,scss,json,md}"
 	@stylelint --fix --ignore-path ./.gitignore "**/*.scss"
 
 .PHONY: lint
