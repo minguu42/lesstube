@@ -10,7 +10,7 @@
 - 状態管理：Recoil
 - デプロイ：Vercel
 - フォーマッタ・リンタ：Prettier, ESLint, stylelint
-- テスト：Jest + React Testing Library
+- テスト：Jest + React Testing Library, Next page tester, MSW
 - タスクランナー：GNU make
 
 ### ローカル実行
