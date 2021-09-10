@@ -1,10 +1,13 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { getPage } from "next-page-tester";
 
 describe("Home ページの表示に関するテスト", () => {
   beforeEach(async () => {
     const { render } = await getPage({ route: "/" });
     render();
+    await waitFor(() =>
+      screen.getAllByAltText("モック動画タイトル2のサムネイル")
+    );
   });
 
   test("TopAppBar に LessTube のロゴ画像を表示する", () => {
@@ -13,9 +16,24 @@ describe("Home ページの表示に関するテスト", () => {
     ).toBeInTheDocument();
   });
 
-  test.todo("display input filed in searchBar");
-  test.todo("display button in searchBar");
-  test.todo("display thumbnail in videoCard");
+  test("TopAppBar に LessTube の文字を表示する", () => {
+    expect(screen.getByText(/LessTube/)).toBeInTheDocument();
+  });
+
+  test("SearchBar に入力フィールドを表示する", () => {
+    expect(screen.getByPlaceholderText("検索")).toBeInTheDocument();
+  });
+
+  test("SearchBar に検索ボタンを表示する", () => {
+    expect(screen.getByRole("button", { name: "検索" })).toBeInTheDocument();
+  });
+
+  test("VideoList の1つの VideoListItem のサムネイル画像を表示する", () => {
+    expect(
+      screen.getAllByAltText("モック動画タイトル1のサムネイル")[0]
+    ).toBeInTheDocument();
+  });
+
   test.todo("display title in videoCard");
   test.todo("display channelTitle in videoCard");
   test.todo("display statistics in videoCard");

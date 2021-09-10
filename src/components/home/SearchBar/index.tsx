@@ -31,7 +31,7 @@ export const SearchBar = ({
       required
       className={styles.input}
     />
-    <button type="submit" className={styles.button}>
+    <button type="submit" aria-label="検索" className={styles.button}>
       <SearchIcon color="#080a0f" />
     </button>
   </form>
