@@ -19,7 +19,7 @@ const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
   <div>
     <Image
       src={video.thumbnailURL}
-      alt="thumbnail image"
+      alt={`${video.title}のサムネイル`}
       width={320}
       height={176}
     />
