@@ -10,7 +10,7 @@ export const TopAppBar = (): JSX.Element => (
         <a className={styles.titleLayout}>
           <Image
             src="/logo.png"
-            alt="Image of LessTube's logo"
+            alt="LessTube のロゴ画像"
             width={32}
             height={32}
           />
