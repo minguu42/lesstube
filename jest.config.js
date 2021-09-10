@@ -1,16 +1,18 @@
 module.exports = {
   testEnvironment: "jsdom",
   collectCoverageFrom: [
-    "**/*.{js,jsx,ts,tsx}",
+    "**/*.{jsx,ts,tsx}",
     "!**/*.d.ts",
     "!**/node_modules/**",
+    "!**/.next/**",
   ],
   moduleNameMapper: {
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-    "^@/components/(.*)$": "<rootDir>/components/$1",
-    "^@/lib/(.*)$": "<rootDir>/lib/$1",
-    "^@/models/(.*)$": "<rootDir>/models/$1",
-    "^@/pages/(.*)$": "<rootDir>/pages/$1",
+    "^.+\\.(css|sass|scss)$": "<rootDir>/src/__mocks__/styleMock.js",
+    "^components/(.*)$": "<rootDir>/src/components/$1",
+    "^lib/(.*)$": "<rootDir>/src/lib/$1",
+    "^models/(.*)$": "<rootDir>/src/models/$1",
+    "^pages/(.*)$": "<rootDir>/src/pages/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/.next/"],
   transform: {

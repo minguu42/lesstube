@@ -20,6 +20,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "@types/react": "^17.0.19",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "babel-jest": "^27.0.6",
@@ -28,6 +29,8 @@
     "eslint-config-prettier": "^8.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.0.6",
+    "msw": "^0.35.0",
+    "next-page-tester": "^0.28.0",
     "prettier": "^2.3.2",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
@@ -35,6 +38,7 @@
     "stylelint-config-standard": "^22.0.0",
     "stylelint-order": "^4.1.0",
     "stylelint-scss": "^3.20.1",
-    "typescript": ">=3.3.1 <4.5.0"
+    "typescript": ">=3.3.1 <4.5.0",
+    "whatwg-fetch": "^3.6.2"
   }
 }

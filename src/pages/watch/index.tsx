@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import TopAppBar from "components/common/TopAppBar";
-import YouTubePlayerContainer from "components/watch/YouTubePlayer";
-import SideSheet from "components/watch/SideSheet";
+import YouTubePlayer from "components/watch/YouTubePlayer";
+import WatchListSheet from "components/watch/WatchListSheet";
 import styles from "./styles.module.scss";
 
 const Watch: NextPage = () => (
@@ -19,9 +19,9 @@ const Watch: NextPage = () => (
     <TopAppBar />
     <div className={styles.sideSheetLayout}>
       <main className={styles.main}>
-        <YouTubePlayerContainer />
+        <YouTubePlayer />
       </main>
-      <SideSheet />
+      <WatchListSheet />
     </div>
   </div>
 );
