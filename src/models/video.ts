@@ -75,9 +75,9 @@ export type SearchListResponse = {
 export const isSearchListResponse = (
   arg: unknown
 ): arg is SearchListResponse => {
-  const sr = arg as SearchListResponse;
+  const s = arg as SearchListResponse;
 
-  return Array.isArray(sr?.items) && sr?.items.every(isSearchResponse);
+  return Array.isArray(s?.items) && s?.items.every(isSearchResponse);
 };
 
 export type Video = {

@@ -49,16 +49,13 @@ const SearchBarContainer = (): JSX.Element => {
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-    console.log("Submit");
 
     fetchData(
       "/search",
       `part=snippet&maxResults=12&q=${keyword}&regionCode=JP&type=video`
     )
       .then((data) => {
-        console.log(data);
         if (isSearchListResponse(data)) {
-          console.log("2");
           setVideos(newVideosFromSearch(data));
         }
       })
