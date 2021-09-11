@@ -28,16 +28,29 @@ describe("Home ページの表示に関するテスト", () => {
     expect(screen.getByRole("button", { name: "検索" })).toBeInTheDocument();
   });
 
-  test("VideoList の1つの VideoListItem のサムネイル画像を表示する", () => {
+  test("1つ目の VideoListItem のサムネイル画像を表示する", () => {
     expect(
       screen.getAllByAltText("モック動画タイトル1のサムネイル")[0]
     ).toBeInTheDocument();
   });
 
-  test.todo("display title in videoCard");
-  test.todo("display channelTitle in videoCard");
-  test.todo("display statistics in videoCard");
-  test.todo("display watchNowButton in videoCard");
+  test("1つ目の VideoListItem のタイトルを表示する", () => {
+    expect(screen.getByText("モック動画タイトル1")).toBeInTheDocument();
+  });
+
+  test("1つ目の VideoListItem のチャンネルタイトルを表示する", () => {
+    expect(screen.getByText("モックチャンネル1")).toBeInTheDocument();
+  });
+
+  test("1つ目の VideoListItem の視聴回数と日付を表示する", () => {
+    expect(screen.getByText("1,000,000 views・2021/09/01")).toBeInTheDocument();
+  });
+
+  test("1つ目の VideoListItem の今から見るボタンを表示する", () => {
+    expect(
+      screen.getAllByRole("button", { name: "今から見る" })[0]
+    ).toBeInTheDocument();
+  });
 });
 
 test.todo("検索バーにキーワードを入力して, 動画を検索し, 一覧表示する");
