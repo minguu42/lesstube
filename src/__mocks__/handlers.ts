@@ -31,7 +31,7 @@ export const handlers = [
             kind: "youtube#video",
             id: "naKYj4a3wb1",
             snippet: {
-              publishedAt: "2021-09-31T12:34:56Z",
+              publishedAt: "2021-09-30T00:00:00Z",
               title: "テストタイトル2",
               description: "テスト説明2",
               thumbnails: {
