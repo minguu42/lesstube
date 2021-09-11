@@ -5,6 +5,7 @@ import styles from "./styles.module.scss";
 
 type OutlinedButtonProps = {
   label: string;
+  ariaLabel: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
@@ -15,9 +16,14 @@ type OutlinedLinkButtonProps = {
 
 export const OutlinedButton = ({
   label,
+  ariaLabel,
   onClick,
 }: OutlinedButtonProps): JSX.Element => (
-  <button onClick={onClick} className={styles.outlinedButton}>
+  <button
+    aria-label={ariaLabel}
+    onClick={onClick}
+    className={styles.outlinedButton}
+  >
     {label}
   </button>
 );

@@ -35,7 +35,11 @@ const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
             {formatDate(video.publishedAt)}
           </p>
         </div>
-        <OutlinedButton label="今から見る" onClick={handleClick} />
+        <OutlinedButton
+          label="今から見る"
+          ariaLabel={`${video.title}を今から見る`}
+          onClick={handleClick}
+        />
       </div>
     </div>
   </div>
