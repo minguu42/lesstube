@@ -126,7 +126,7 @@ export const videosState = atom<Video[]>({
   default: [],
 });
 
-export const watchNowVideosState = atom<Video[]>({
-  key: "watchNowVideosState",
+export const watchVideosState = atom<Video[]>({
+  key: "watchVideosState",
   default: [],
 });

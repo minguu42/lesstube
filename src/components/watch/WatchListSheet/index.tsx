@@ -1,7 +1,7 @@
 import SideSheet from "components/common/SideSheet";
 import VideoCard from "components/common/VideoCard";
 import styles from "./styles.module.scss";
-import { Video, watchNowVideosState } from "models/video";
+import { Video, watchVideosState } from "models/video";
 import { useRecoilValue } from "recoil";
 
 type Props = {
@@ -24,7 +24,7 @@ export const WatchListSheet = ({ watchNowVideos }: Props): JSX.Element => (
 );
 
 const WatchListSheetContainer = (): JSX.Element => {
-  const watchNowVideos = useRecoilValue(watchNowVideosState);
+  const watchNowVideos = useRecoilValue(watchVideosState);
 
   return <WatchListSheet watchNowVideos={watchNowVideos} />;
 };

@@ -5,7 +5,7 @@ import SideSheet from "components/common/SideSheet";
 import VideoCard from "components/common/VideoCard";
 import { OutlinedLinkButton } from "components/common/Button";
 import styles from "./styles.module.scss";
-import { Video, watchNowVideosState } from "models/video";
+import { Video, watchVideosState } from "models/video";
 
 type Props = {
   watchNowVideos: Video[];
@@ -31,7 +31,7 @@ export const VideoCardSheet = ({ watchNowVideos }: Props): JSX.Element => (
 
 const VideoCardSheetContainer = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(true);
-  const watchNowVideos = useRecoilValue(watchNowVideosState);
+  const watchNowVideos = useRecoilValue(watchVideosState);
 
   useEffect(() => {
     if (watchNowVideos.length === 0) {

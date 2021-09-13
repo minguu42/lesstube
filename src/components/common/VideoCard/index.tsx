@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 
 import TrashIcon from "components/common/icons/TrashIcon";
 import styles from "./styles.module.scss";
-import { Video, watchNowVideosState } from "models/video";
+import { Video, watchVideosState } from "models/video";
 
 type Props = {
   video: Video;
@@ -39,8 +39,7 @@ const VideoCard = ({ video, handleClick }: Props): JSX.Element => (
 );
 
 const VideoCardContainer = ({ video }: ContainerProps): JSX.Element => {
-  const [watchNowVideos, setWatchNowVideos] =
-    useRecoilState(watchNowVideosState);
+  const [watchNowVideos, setWatchNowVideos] = useRecoilState(watchVideosState);
 
   const handleClick = (): void => {
     const index = watchNowVideos.findIndex((item) => video === item);
