@@ -13,7 +13,7 @@ type Props = YouTubeProps & {
 const YouTubePlayer = ({ watchingVideo, opts, onEnd }: Props): JSX.Element => (
   <>
     {watchingVideo && (
-      <div>
+      <div data-testid="youtube-player">
         <YouTube videoId={watchingVideo.id} opts={opts} onEnd={onEnd} />
         <div className={styles.info}>
           <h1 className={styles.title}>{watchingVideo.title}</h1>
