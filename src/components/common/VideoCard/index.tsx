@@ -27,7 +27,11 @@ const VideoCard = ({ video, handleClick }: Props): JSX.Element => (
         <h6 className={styles.title}>{video.title}</h6>
         <p className={styles.channelTitle}>{video.channelTitle}</p>
       </div>
-      <button onClick={handleClick} className={styles.trashButton}>
+      <button
+        aria-label={`${video.title}の削除`}
+        onClick={handleClick}
+        className={styles.trashButton}
+      >
         <TrashIcon color="#666666" />
       </button>
     </div>

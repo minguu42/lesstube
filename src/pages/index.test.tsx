@@ -5,9 +5,7 @@ import { getPage } from "next-page-tester";
 beforeEach(async () => {
   const { render } = await getPage({ route: "/" });
   render();
-  await waitFor(() =>
-    screen.getAllByAltText("テストタイトル2のサムネイル")
-  );
+  await waitFor(() => screen.getAllByAltText("テストタイトル2のサムネイル"));
 });
 
 describe("Home ページの表示に関するテスト", () => {
@@ -55,7 +53,7 @@ describe("Home ページの表示に関するテスト", () => {
 
   test("2つ目の VideoListItem のサムネイル画像を表示する", () => {
     expect(
-        screen.getAllByAltText("テストタイトル2のサムネイル")[0]
+      screen.getAllByAltText("テストタイトル2のサムネイル")[0]
     ).toBeInTheDocument();
   });
 
@@ -68,12 +66,14 @@ describe("Home ページの表示に関するテスト", () => {
   });
 
   test("2つ目の VideoListItem の視聴回数と日付を表示する", () => {
-    expect(screen.getByText("123,456,789 views・2021/09/30")).toBeInTheDocument();
+    expect(
+      screen.getByText("123,456,789 views・2021/09/30")
+    ).toBeInTheDocument();
   });
 
   test("2つ目の VideoListItem の今から見るボタンを表示する", () => {
     expect(
-        screen.getByRole("button", { name: "テストタイトル2を今から見る" })
+      screen.getByRole("button", { name: "テストタイトル2を今から見る" })
     ).toBeInTheDocument();
   });
 });
@@ -94,10 +94,39 @@ test("検索バーにキーワードを入力し, 検索ボタンを押して, �
 });
 
 test("「今から見る」ボタンを押して, WatchList に動画を追加する", async () => {
-  userEvent.click(screen.getByRole("button", { name: "テストタイトル1を今から見る"}))
+  userEvent.click(
+    screen.getByRole("button", { name: "テストタイトル1を今から見る" })
+  );
 
-  expect(await screen.findByRole("link", { name: "動画を見る"})).toBeInTheDocument()
+  expect(
+    await screen.findByRole("link", { name: "動画を見る" })
+  ).toBeInTheDocument();
 });
 
-test.todo("Trash アイコンを押して, watchNowVideos から video を削除する");
-test.todo("動画を見るボタンをおし, /watch ページに移動する");
+test("Trash アイコンを押して, watchNowVideos から video を削除する", async () => {
+  userEvent.click(
+    screen.getByRole("button", { name: "テストタイトル1を今から見る" })
+  );
+  expect(
+    await screen.findByRole("link", { name: "動画を見る" })
+  ).toBeInTheDocument();
+
+  userEvent.click(
+    screen.getByRole("button", { name: "テストタイトル1の削除" })
+  );
+
+  expect(screen.queryByRole("link", { name: "動画を見る" })).toBeNull();
+});
+
+test("動画を見るボタンをおし, /watch ページに移動する", async () => {
+  userEvent.click(
+    screen.getByRole("button", { name: "テストタイトル1を今から見る" })
+  );
+  expect(
+    await screen.findByRole("link", { name: "動画を見る" })
+  ).toBeInTheDocument();
+
+  userEvent.click(screen.getByRole("link", { name: "動画を見る" }));
+
+  expect(await screen.findByText("動画一覧")).toBeInTheDocument();
+});
