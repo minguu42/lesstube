@@ -31,20 +31,20 @@ const YouTubePlayer = ({ watchingVideo, opts, onEnd }: Props): JSX.Element => (
 );
 
 const YouTubePlayerContainer = (): JSX.Element => {
-  const [watchNowVideos, setWatchNowVideos] = useRecoilState(watchVideosState);
+  const [watchVideos, setWatchVideos] = useRecoilState(watchVideosState);
   const [watchingVideo, setWatchingVideo] = useState<Video | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    if (watchNowVideos.length === 0) {
+    if (watchVideos.length === 0) {
       router.push("/finish").catch((error) => console.error(error));
     } else {
-      setWatchingVideo(watchNowVideos[0]);
+      setWatchingVideo(watchVideos[0]);
     }
-  }, [router, watchNowVideos]);
+  }, [router, watchVideos]);
 
   const handleEnd = () => {
-    setWatchNowVideos(watchNowVideos.slice(1));
+    setWatchVideos(watchVideos.slice(1));
   };
 
   const opts = {
