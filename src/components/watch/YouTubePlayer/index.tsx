@@ -19,7 +19,10 @@ const YouTubePlayer = ({ watchingVideo, opts, onEnd }: Props): JSX.Element => (
           <h1 className={styles.title}>{watchingVideo.title}</h1>
           <p className={styles.channelTitle}>{watchingVideo.channelTitle}</p>
           <p className={styles.statistics}>
-            {watchingVideo.viewCount} views・2021/06/10
+            {watchingVideo.viewCount !== 0
+              ? String(watchingVideo.viewCount) + " views・"
+              : ""}
+            2021/06/10
           </p>
         </div>
       </div>
