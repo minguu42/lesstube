@@ -3,7 +3,12 @@ import { useRecoilState } from "recoil";
 
 import VideoListItem from "components/home/VideoList/VideoListItem";
 import styles from "./styles.module.scss";
-import { isVideosResponse, newVideos, Video, videosState } from "models/video";
+import {
+  isVideoListResponse,
+  newVideos,
+  Video,
+  videosState,
+} from "models/video";
 import { fetchData } from "lib/fetch";
 
 type Props = {
@@ -27,7 +32,7 @@ const VideoListContainer = (): JSX.Element => {
       "part=snippet,statistics&chart=mostPopular&maxResults=12&regionCode=JP"
     )
       .then((data) => {
-        if (isVideosResponse(data)) {
+        if (isVideoListResponse(data)) {
           setVideos(newVideos(data));
         }
       })
