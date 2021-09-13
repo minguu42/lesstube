@@ -4,7 +4,7 @@ import Head from "next/head";
 import TopAppBar from "components/common/TopAppBar";
 import SearchBar from "components/home/SearchBar";
 import VideoList from "components/home/VideoList";
-import VideoCardSheet from "components/home/VideoCardSheet";
+import WatchListSheet from "components/home/WatchListSheet";
 import styles from "./styles.module.scss";
 
 const Home: NextPage = () => (
@@ -23,7 +23,7 @@ const Home: NextPage = () => (
         <SearchBar />
         <VideoList />
       </main>
-      <VideoCardSheet />
+      <WatchListSheet />
     </div>
   </div>
 );

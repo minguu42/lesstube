@@ -1,9 +1,15 @@
 @use "styles/variables";
 
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
 .layout {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 16px;
   list-style: none;
 }
