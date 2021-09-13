@@ -1,8 +1,8 @@
 import SideSheet from "components/common/SideSheet";
-import VideoCard from "components/common/VideoCard";
+import WatchListItem from "components/common/WatchListSheet/WatchListItem";
+import { OutlinedLinkButton } from "../Button";
 import styles from "./styles.module.scss";
 import { Video } from "models/video";
-import { OutlinedLinkButton } from "../Button";
 
 type Props = {
   watchVideos: Video[];
@@ -19,9 +19,7 @@ export const WatchListSheet = ({
       <div className={styles.container}>
         <ul className={styles.layout}>
           {watchVideos.map((video) => (
-            <li key={video.id}>
-              <VideoCard video={video} />
-            </li>
+            <WatchListItem video={video} key={video.id} />
           ))}
         </ul>
         {existsWatchButton && (
