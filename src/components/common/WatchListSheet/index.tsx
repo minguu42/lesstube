@@ -19,7 +19,7 @@ export const WatchListSheet = ({
       <div className={styles.container}>
         <ul className={styles.layout}>
           {watchVideos.map((video) => (
-            <WatchListItem video={video} key={video.id} />
+            <WatchListItem key={video.id} video={video} />
           ))}
         </ul>
         {existsWatchButton && (

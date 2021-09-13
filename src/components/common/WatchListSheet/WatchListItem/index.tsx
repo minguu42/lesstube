@@ -8,21 +8,15 @@ import { Video, watchVideosState } from "models/video";
 
 type Props = {
   video: Video;
-  key: React.Key;
   handleDeleteClick: () => void;
 };
 
 type ContainerProps = {
   video: Video;
-  key: React.Key;
 };
 
-const WatchListItem = ({
-  video,
-  key,
-  handleDeleteClick,
-}: Props): JSX.Element => (
-  <li key={key} className={styles.container}>
+const WatchListItem = ({ video, handleDeleteClick }: Props): JSX.Element => (
+  <li className={styles.container}>
     <Image
       src={video.thumbnailURL}
       alt="thumbnail image"
@@ -45,10 +39,7 @@ const WatchListItem = ({
   </li>
 );
 
-const WatchListItemContainer = ({
-  video,
-  key,
-}: ContainerProps): JSX.Element => {
+const WatchListItemContainer = ({ video }: ContainerProps): JSX.Element => {
   const [watchVideos, setWatchVideos] = useRecoilState(watchVideosState);
 
   const handleDeleteClick = (): void => {
@@ -59,13 +50,7 @@ const WatchListItemContainer = ({
     ]);
   };
 
-  return (
-    <WatchListItem
-      video={video}
-      key={key}
-      handleDeleteClick={handleDeleteClick}
-    />
-  );
+  return <WatchListItem video={video} handleDeleteClick={handleDeleteClick} />;
 };
 
 export default WatchListItemContainer;
