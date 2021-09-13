@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 
 import { OutlinedButton } from "components/common/Button";
 import styles from "./styles.module.scss";
-import { Video, watchNowVideosState } from "models/video";
+import { Video, watchVideosState } from "models/video";
 import { formatDate } from "lib/format";
 
 type Props = {
@@ -36,8 +36,8 @@ const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
           </p>
         </div>
         <OutlinedButton
-          label="今から見る"
-          ariaLabel={`${video.title}を今から見る`}
+          label="追加"
+          ariaLabel={`${video.title}の追加`}
           onClick={handleClick}
         />
       </div>
@@ -46,8 +46,7 @@ const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
 );
 
 const VideoListItemContainer = ({ video }: ContainerProps): JSX.Element => {
-  const [watchNowVideos, setWatchNowVideos] =
-    useRecoilState(watchNowVideosState);
+  const [watchNowVideos, setWatchNowVideos] = useRecoilState(watchVideosState);
 
   const handleClick = () => {
     if (watchNowVideos.findIndex((item) => video === item) === -1) {

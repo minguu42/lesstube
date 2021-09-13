@@ -30,12 +30,12 @@ const isVideoResponse = (arg: unknown): arg is VideoResponse => {
   );
 };
 
-export type VideosResponse = {
+export type VideoListResponse = {
   items: VideoResponse[];
 };
 
-export const isVideosResponse = (arg: unknown): arg is VideosResponse => {
-  const vs = arg as VideosResponse;
+export const isVideoListResponse = (arg: unknown): arg is VideoListResponse => {
+  const vs = arg as VideoListResponse;
 
   return Array.isArray(vs?.items) && vs?.items.every(isVideoResponse);
 };
@@ -100,8 +100,8 @@ const newVideo = (videoResp: VideoResponse): Video => {
   };
 };
 
-export const newVideos = (videosResp: VideosResponse): Video[] => {
-  return videosResp.items.map((item) => newVideo(item));
+export const newVideos = (videoListResp: VideoListResponse): Video[] => {
+  return videoListResp.items.map((item) => newVideo(item));
 };
 
 const newVideoFromSearch = (searchResp: SearchResponse): Video => {
@@ -126,7 +126,7 @@ export const videosState = atom<Video[]>({
   default: [],
 });
 
-export const watchNowVideosState = atom<Video[]>({
-  key: "watchNowVideosState",
+export const watchVideosState = atom<Video[]>({
+  key: "watchVideosState",
   default: [],
 });

@@ -45,9 +45,9 @@ describe("Home ページの表示に関するテスト", () => {
     expect(screen.getByText("100 views・2021/09/01")).toBeInTheDocument();
   });
 
-  test("1つ目の VideoListItem の今から見るボタンを表示する", () => {
+  test("1つ目の VideoListItem の追加ボタンを表示する", () => {
     expect(
-      screen.getByRole("button", { name: "テストタイトル1を今から見る" })
+      screen.getByRole("button", { name: "テストタイトル1の追加" })
     ).toBeInTheDocument();
   });
 
@@ -71,9 +71,9 @@ describe("Home ページの表示に関するテスト", () => {
     ).toBeInTheDocument();
   });
 
-  test("2つ目の VideoListItem の今から見るボタンを表示する", () => {
+  test("2つ目の VideoListItem の追加ボタンを表示する", () => {
     expect(
-      screen.getByRole("button", { name: "テストタイトル2を今から見る" })
+      screen.getByRole("button", { name: "テストタイトル2の追加" })
     ).toBeInTheDocument();
   });
 });
@@ -93,9 +93,9 @@ test("検索バーにキーワードを入力し, 検索ボタンを押して, �
   expect(screen.getByText("テストタイトル4")).toBeInTheDocument();
 });
 
-test("「今から見る」ボタンを押して, WatchList に動画を追加する", async () => {
+test("追加ボタンを押して, WatchList に動画を追加する", async () => {
   userEvent.click(
-    screen.getByRole("button", { name: "テストタイトル1を今から見る" })
+    screen.getByRole("button", { name: "テストタイトル1の追加" })
   );
 
   expect(
@@ -105,7 +105,7 @@ test("「今から見る」ボタンを押して, WatchList に動画を追加�
 
 test("Trash アイコンを押して, watchNowVideos から video を削除する", async () => {
   userEvent.click(
-    screen.getByRole("button", { name: "テストタイトル1を今から見る" })
+    screen.getByRole("button", { name: "テストタイトル1の追加" })
   );
   expect(
     await screen.findByRole("link", { name: "動画を見る" })
@@ -120,13 +120,14 @@ test("Trash アイコンを押して, watchNowVideos から video を削除す�
 
 test("動画を見るボタンをおし, /watch ページに移動する", async () => {
   userEvent.click(
-    screen.getByRole("button", { name: "テストタイトル1を今から見る" })
+    screen.getByRole("button", { name: "テストタイトル1の追加" })
   );
   expect(
     await screen.findByRole("link", { name: "動画を見る" })
   ).toBeInTheDocument();
+  expect(screen.queryByTestId("youtube-player")).toBeNull();
 
   userEvent.click(screen.getByRole("link", { name: "動画を見る" }));
 
-  expect(await screen.findByText("動画一覧")).toBeInTheDocument();
+  expect(await screen.findByTestId("youtube-player")).toBeInTheDocument();
 });

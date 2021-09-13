@@ -1,13 +1,13 @@
-@use "src/styles/variables";
+@use "styles/variables";
 
-.contents {
+.container {
   display: flex;
   flex-direction: column;
   gap: 16px;
   align-items: center;
 }
 
-.videoCardLayout {
+.layout {
   display: flex;
   flex-direction: column;
   gap: 8px;

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import YouTube, { YouTubeProps } from "react-youtube";
 
 import styles from "./styles.module.scss";
-import { Video, watchNowVideosState } from "models/video";
+import { Video, watchVideosState } from "models/video";
 
 type Props = YouTubeProps & {
   watchingVideo: Video | null;
@@ -13,7 +13,7 @@ type Props = YouTubeProps & {
 const YouTubePlayer = ({ watchingVideo, opts, onEnd }: Props): JSX.Element => (
   <>
     {watchingVideo && (
-      <div>
+      <div data-testid="youtube-player">
         <YouTube videoId={watchingVideo.id} opts={opts} onEnd={onEnd} />
         <div className={styles.info}>
           <h1 className={styles.title}>{watchingVideo.title}</h1>
@@ -31,8 +31,7 @@ const YouTubePlayer = ({ watchingVideo, opts, onEnd }: Props): JSX.Element => (
 );
 
 const YouTubePlayerContainer = (): JSX.Element => {
-  const [watchNowVideos, setWatchNowVideos] =
-    useRecoilState(watchNowVideosState);
+  const [watchNowVideos, setWatchNowVideos] = useRecoilState(watchVideosState);
   const [watchingVideo, setWatchingVideo] = useState<Video | null>(null);
   const router = useRouter();
 
