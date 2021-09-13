@@ -18,9 +18,6 @@ class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
-          {/* 開発中に検索エンジンにインデックスされるのを防ぐ */}
-          <meta name="robots" content="noindex,nofollow" />
-
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap"
             rel="stylesheet"
