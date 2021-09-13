@@ -46,11 +46,11 @@ const VideoListItem = ({ video, handleClick }: Props): JSX.Element => (
 );
 
 const VideoListItemContainer = ({ video }: ContainerProps): JSX.Element => {
-  const [watchNowVideos, setWatchNowVideos] = useRecoilState(watchVideosState);
+  const [watchVideos, setWatchVideos] = useRecoilState(watchVideosState);
 
   const handleClick = () => {
-    if (watchNowVideos.findIndex((item) => video === item) === -1) {
-      setWatchNowVideos((prev) => [...prev, video]);
+    if (watchVideos.findIndex((item) => video === item) === -1) {
+      setWatchVideos((prev) => [...prev, video]);
     }
   };
 
