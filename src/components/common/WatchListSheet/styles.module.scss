@@ -1,6 +1,6 @@
-@use "src/styles/variables";
+@use "styles/variables";
 
-.videoCardLayout {
+.layout {
   display: flex;
   flex-direction: column;
   gap: 8px;

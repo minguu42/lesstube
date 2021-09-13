@@ -128,5 +128,5 @@ test("動画を見るボタンをおし, /watch ページに移動する", async
 
   userEvent.click(screen.getByRole("link", { name: "動画を見る" }));
 
-  expect(await screen.findByText("動画一覧")).toBeInTheDocument();
+  expect(await screen.findByText("今から見る")).toBeInTheDocument();
 });
