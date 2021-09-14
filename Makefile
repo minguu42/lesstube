@@ -24,7 +24,7 @@ lint: ## ESLint, stylelint による静的解析
 
 .PHONY: test
 test: ## Jest, React Testing Library によるテスト
-	@jest
+	@TZ=Asia/Tokyo jest
 
 .PHONY: check
 check: ## fmt, lint, test を実行し, 適切な状態か確認する
