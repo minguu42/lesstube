@@ -5,7 +5,8 @@ import { getPage } from "next-page-tester";
 beforeEach(async () => {
   const { render } = await getPage({ route: "/" });
   render();
-  await waitFor(() => screen.getAllByAltText("テストタイトル2のサムネイル"));
+
+  await waitFor(() => screen.getAllByAltText("テストタイトル1のサムネイル"));
 });
 
 describe("Home ページの表示に関するテスト", () => {
@@ -79,37 +80,67 @@ describe("Home ページの表示に関するテスト", () => {
 });
 
 test("検索バーにキーワードを入力し, エンターを押して, 動画を検索し, 一覧表示する", async () => {
-  userEvent.type(screen.getByPlaceholderText("検索"), "test{enter}");
+  userEvent.type(screen.getByPlaceholderText("検索"), "テスト{enter}");
 
   expect(await screen.findByText("テストタイトル3")).toBeInTheDocument();
+  expect(
+    screen.getAllByAltText("テストタイトル3のサムネイル")[0]
+  ).toBeInTheDocument();
+  expect(screen.getByText("テストチャンネル3")).toBeInTheDocument();
+  expect(screen.getByText("2021/01/01")).toBeInTheDocument();
+  expect(
+    screen.getByRole("button", { name: "テストタイトル3の追加" })
+  ).toBeInTheDocument();
+
   expect(screen.getByText("テストタイトル4")).toBeInTheDocument();
+  expect(
+    screen.getAllByAltText("テストタイトル4のサムネイル")[0]
+  ).toBeInTheDocument();
+  expect(screen.getByText("テストチャンネル4")).toBeInTheDocument();
+  expect(screen.getByText("2021/12/31")).toBeInTheDocument();
+  expect(
+    screen.getByRole("button", { name: "テストタイトル4の追加" })
+  ).toBeInTheDocument();
 });
 
 test("検索バーにキーワードを入力し, 検索ボタンを押して, 動画を検索し, 一覧表示する", async () => {
-  userEvent.type(screen.getByPlaceholderText("検索"), "test");
+  userEvent.type(screen.getByPlaceholderText("検索"), "テスト");
   userEvent.click(screen.getByRole("button", { name: "検索" }));
 
   expect(await screen.findByText("テストタイトル3")).toBeInTheDocument();
+  expect(
+    screen.getAllByAltText("テストタイトル3のサムネイル")[0]
+  ).toBeInTheDocument();
+  expect(screen.getByText("テストチャンネル3")).toBeInTheDocument();
+  expect(screen.getByText("2021/01/01")).toBeInTheDocument();
+  expect(
+    screen.getByRole("button", { name: "テストタイトル3の追加" })
+  ).toBeInTheDocument();
+
   expect(screen.getByText("テストタイトル4")).toBeInTheDocument();
+  expect(
+    screen.getAllByAltText("テストタイトル4のサムネイル")[0]
+  ).toBeInTheDocument();
+  expect(screen.getByText("テストチャンネル4")).toBeInTheDocument();
+  expect(screen.getByText("2021/12/31")).toBeInTheDocument();
+  expect(
+    screen.getByRole("button", { name: "テストタイトル4の追加" })
+  ).toBeInTheDocument();
 });
 
-test("追加ボタンを押して, WatchList に動画を追加する", async () => {
+test("追加ボタンを押して, WatchList に動画を追加する", () => {
   userEvent.click(
     screen.getByRole("button", { name: "テストタイトル1の追加" })
   );
 
-  expect(
-    await screen.findByRole("link", { name: "動画を見る" })
-  ).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "動画を見る" })).toBeInTheDocument();
 });
 
-test("Trash アイコンを押して, watchNowVideos から video を削除する", async () => {
+test("ゴミ箱アイコンを押して, WatchList から動画を削除する", () => {
   userEvent.click(
     screen.getByRole("button", { name: "テストタイトル1の追加" })
   );
-  expect(
-    await screen.findByRole("link", { name: "動画を見る" })
-  ).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "動画を見る" })).toBeInTheDocument();
 
   userEvent.click(
     screen.getByRole("button", { name: "テストタイトル1の削除" })
@@ -122,9 +153,8 @@ test("動画を見るボタンをおし, /watch ページに移動する", async
   userEvent.click(
     screen.getByRole("button", { name: "テストタイトル1の追加" })
   );
-  expect(
-    await screen.findByRole("link", { name: "動画を見る" })
-  ).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: "動画を見る" })).toBeInTheDocument();
+
   expect(screen.queryByTestId("youtube-player")).toBeNull();
 
   userEvent.click(screen.getByRole("link", { name: "動画を見る" }));
