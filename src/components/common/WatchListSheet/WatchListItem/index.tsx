@@ -19,7 +19,7 @@ const WatchListItem = ({ video, handleDeleteClick }: Props): JSX.Element => (
   <li className={styles.container}>
     <Image
       src={video.thumbnailURL}
-      alt="thumbnail image"
+      alt={`${video.title}のサムネイル`}
       width={112}
       height={68}
     />
