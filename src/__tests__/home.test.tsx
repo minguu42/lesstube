@@ -1,22 +1,25 @@
-import { screen, waitFor } from "@testing-library/react";
+import { RecoilRoot } from "recoil";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { getPage } from "next-page-tester";
+
+import Home from "pages/index";
 
 beforeEach(async () => {
-  const { render } = await getPage({ route: "/" });
-  render();
+  render(
+    <RecoilRoot>
+      <Home />
+    </RecoilRoot>
+  );
 
-  await waitFor(() => screen.getAllByAltText("テストタイトル1のサムネイル"));
+  await waitFor(() => screen.getByAltText("テストタイトル1のサムネイル"));
 });
 
-describe("Home ページの表示に関するテスト", () => {
+describe("表示に関するテスト", () => {
   test("TopAppBar に LessTube のロゴ画像を表示する", () => {
-    expect(
-      screen.getAllByAltText("LessTube のロゴ画像")[0]
-    ).toBeInTheDocument();
+    expect(screen.getByAltText("LessTube のロゴ画像")).toBeInTheDocument();
   });
 
-  test("TopAppBar に LessTube の文字を表示する", () => {
+  test("TopAppBar に LessTube を表示する", () => {
     expect(screen.getByText(/LessTube/)).toBeInTheDocument();
   });
 
@@ -28,14 +31,14 @@ describe("Home ページの表示に関するテスト", () => {
     expect(screen.getByRole("button", { name: "検索" })).toBeInTheDocument();
   });
 
-  test("1つ目の VideoListItem のサムネイル画像を表示する", () => {
-    expect(
-      screen.getAllByAltText("テストタイトル1のサムネイル")[0]
-    ).toBeInTheDocument();
-  });
-
   test("1つ目の VideoListItem のタイトルを表示する", () => {
     expect(screen.getByText("テストタイトル1")).toBeInTheDocument();
+  });
+
+  test("1つ目の VideoListItem のサムネイル画像を表示する", () => {
+    expect(
+      screen.getByAltText("テストタイトル1のサムネイル")
+    ).toBeInTheDocument();
   });
 
   test("1つ目の VideoListItem のチャンネルタイトルを表示する", () => {
@@ -52,14 +55,14 @@ describe("Home ページの表示に関するテスト", () => {
     ).toBeInTheDocument();
   });
 
-  test("2つ目の VideoListItem のサムネイル画像を表示する", () => {
-    expect(
-      screen.getAllByAltText("テストタイトル2のサムネイル")[0]
-    ).toBeInTheDocument();
-  });
-
   test("2つ目の VideoListItem のタイトルを表示する", () => {
     expect(screen.getByText("テストタイトル2")).toBeInTheDocument();
+  });
+
+  test("2つ目の VideoListItem のサムネイル画像を表示する", () => {
+    expect(
+      screen.getByAltText("テストタイトル2のサムネイル")
+    ).toBeInTheDocument();
   });
 
   test("2つ目の VideoListItem のチャンネルタイトルを表示する", () => {
@@ -79,12 +82,12 @@ describe("Home ページの表示に関するテスト", () => {
   });
 });
 
-test("検索バーにキーワードを入力し, エンターを押して, 動画を検索し, 一覧表示する", async () => {
+test("検索バーにキーワードを入力し, エンターキーを押して, 動画を検索し, 一覧表示する", async () => {
   userEvent.type(screen.getByPlaceholderText("検索"), "テスト{enter}");
 
   expect(await screen.findByText("テストタイトル3")).toBeInTheDocument();
   expect(
-    screen.getAllByAltText("テストタイトル3のサムネイル")[0]
+    screen.getByAltText("テストタイトル3のサムネイル")
   ).toBeInTheDocument();
   expect(screen.getByText("テストチャンネル3")).toBeInTheDocument();
   expect(screen.getByText("2021/01/01")).toBeInTheDocument();
@@ -94,7 +97,7 @@ test("検索バーにキーワードを入力し, エンターを押して, 動�
 
   expect(screen.getByText("テストタイトル4")).toBeInTheDocument();
   expect(
-    screen.getAllByAltText("テストタイトル4のサムネイル")[0]
+    screen.getByAltText("テストタイトル4のサムネイル")
   ).toBeInTheDocument();
   expect(screen.getByText("テストチャンネル4")).toBeInTheDocument();
   expect(screen.getByText("2021/12/31")).toBeInTheDocument();
@@ -109,7 +112,7 @@ test("検索バーにキーワードを入力し, 検索ボタンを押して, �
 
   expect(await screen.findByText("テストタイトル3")).toBeInTheDocument();
   expect(
-    screen.getAllByAltText("テストタイトル3のサムネイル")[0]
+    screen.getByAltText("テストタイトル3のサムネイル")
   ).toBeInTheDocument();
   expect(screen.getByText("テストチャンネル3")).toBeInTheDocument();
   expect(screen.getByText("2021/01/01")).toBeInTheDocument();
@@ -119,7 +122,7 @@ test("検索バーにキーワードを入力し, 検索ボタンを押して, �
 
   expect(screen.getByText("テストタイトル4")).toBeInTheDocument();
   expect(
-    screen.getAllByAltText("テストタイトル4のサムネイル")[0]
+    screen.getByAltText("テストタイトル4のサムネイル")
   ).toBeInTheDocument();
   expect(screen.getByText("テストチャンネル4")).toBeInTheDocument();
   expect(screen.getByText("2021/12/31")).toBeInTheDocument();
@@ -147,17 +150,4 @@ test("ゴミ箱アイコンを押して, WatchList から動画を削除する",
   );
 
   expect(screen.queryByRole("link", { name: "動画を見る" })).toBeNull();
-});
-
-test("動画を見るボタンをおし, /watch ページに移動する", async () => {
-  userEvent.click(
-    screen.getByRole("button", { name: "テストタイトル1の追加" })
-  );
-  expect(screen.getByRole("link", { name: "動画を見る" })).toBeInTheDocument();
-
-  expect(screen.queryByTestId("youtube-player")).toBeNull();
-
-  userEvent.click(screen.getByRole("link", { name: "動画を見る" }));
-
-  expect(await screen.findByTestId("youtube-player")).toBeInTheDocument();
 });
