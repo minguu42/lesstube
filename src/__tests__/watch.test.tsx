@@ -1,25 +1,39 @@
-import { screen, waitFor } from "@testing-library/react";
-import { getPage } from "next-page-tester";
-import userEvent from "@testing-library/user-event";
+import { MutableSnapshot, RecoilRoot } from "recoil";
+import { render, screen } from "@testing-library/react";
 
-beforeEach(async () => {
-  const { render } = await getPage({ route: "/" });
-  render();
+import Watch from "pages/watch/index";
+import { watchVideosState } from "models/video";
 
-  await waitFor(() => screen.getAllByAltText("テストタイトル1のサムネイル"));
-  userEvent.click(
-    screen.getByRole("button", { name: "テストタイトル1の追加" })
+beforeEach(() => {
+  const initializeState = ({ set }: MutableSnapshot) => {
+    set(watchVideosState, [
+      {
+        id: "xxxxxxxxxxx1",
+        title: "テストタイトル1",
+        thumbnailURL: "https://example.com",
+        channelTitle: "テストチャンネル1",
+        viewCount: 123,
+        publishedAt: new Date("2006-01-02T00:00:00Z"),
+      },
+      {
+        id: "xxxxxxxxxxx2",
+        title: "テストタイトル2",
+        thumbnailURL: "https://example.com",
+        channelTitle: "テストチャンネル2",
+        viewCount: 123456,
+        publishedAt: new Date("2007-01-02T00:00:00Z"),
+      },
+    ]);
+  };
+
+  render(
+    <RecoilRoot initializeState={initializeState}>
+      <Watch />
+    </RecoilRoot>
   );
-  userEvent.click(
-    screen.getByRole("button", { name: "テストタイトル2の追加" })
-  );
-
-  userEvent.click(screen.getByRole("link", { name: "動画を見る" }));
-
-  await waitFor(() => screen.getByTestId("youtube-player"));
 });
 
-describe("Watch ページの表示に関するテスト", () => {
+describe("表示に関するテスト", () => {
   test("TopAppBar に LessTube のロゴ画像を表示する", () => {
     expect(
       screen.getAllByAltText("LessTube のロゴ画像")[0]

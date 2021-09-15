@@ -31,7 +31,7 @@ npm run dev
 - 状態管理：Recoil
 - デプロイ：Vercel
 - フォーマッタ・リンタ：Prettier, ESLint, stylelint
-- テスト：Jest, React Testing Library, Next page tester, MSW
+- テスト：Jest, React Testing Library, MSW
 - タスクランナー：GNU make
 
 ### ローカル実行
